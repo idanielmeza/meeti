@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
-const meeti = new Sequelize('meeti', 'postgres', '12345', {
-    host: 'localhost',
-    port: 5432,
+const meeti = new Sequelize(process.env.DB, process.env.USERDB, process.env.PASSWORDDB, {
+    host: process.env.HOSTDB,
+    port: process.env.PORTDB,
     dialect: 'postgres',
     pool: {
         max: 5,
