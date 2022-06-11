@@ -5,6 +5,7 @@ const meeti = require('../config/db');
 const flash = require('connect-flash');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('../config/passport');
 
 class Server{
 
@@ -56,6 +57,10 @@ class Server{
             resave: false,
             saveUninitialized: false
         }));
+
+        //Habilitar passport
+        this.app.use(passport.initialize());
+        this.app.use(passport.session());
 
         //Habilitar flash messages
         this.app.use(flash());

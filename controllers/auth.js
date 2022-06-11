@@ -47,10 +47,6 @@ const formLogin = (req, res) => {
     });
 }
 
-const iniciarSesion = async(req,res)=>{
-    console.log(req.body);
-}
-
 const confirmarCuenta = async(req,res,next)=>{
     const {email} = req.params;
     
@@ -73,6 +69,5 @@ module.exports = {
     formCrearCuenta,
     crearCuenta,
     formLogin,
-    iniciarSesion,
     confirmarCuenta
 }
