@@ -16,6 +16,8 @@ class Server{
         this.paths = {
             home: '/',
             auth: '/auth',
+            admin: '/administracion',
+            grupos: '/grupos',
         }
         this.middlewares();
         this.db();
@@ -26,6 +28,8 @@ class Server{
     async db(){
         try {
             require('./Usuarios');
+            require('./Categorias');
+            require('./Grupos');
             await meeti.sync();
             console.log('Base de datos creada');
         } catch (error) {
@@ -75,6 +79,8 @@ class Server{
     routes(){
         this.app.use(this.paths.home, require('../routes/home'));
         this.app.use(this.paths.auth, require('../routes/auth'));
+        this.app.use(this.paths.admin, require('../routes/admin'));
+        this.app.use(this.paths.grupos, require('../routes/grupos'));
     }
 
     listen(){
